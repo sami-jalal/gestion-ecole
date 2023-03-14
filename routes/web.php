@@ -16,3 +16,37 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth', 'role:admin'])->group((function () {
+    Route::get('/users', function () {
+        return 'users Hello Admin';
+    });
+    
+    Route::get('/teachers', function () {
+        return 'teachers Admin';
+    });
+    
+    Route::get('/students', function () {
+        return 'students Admin';
+    });
+    
+    Route::get('/classes', function () {
+        return 'classes Admin';
+    });
+}));
+
+Route::middleware(['auth', 'role:teacher'])->group((function () {
+    
+    Route::get('/teachers', function () {
+        return 'teachers Admin';
+    });
+    
+    Route::get('/students', function () {
+        return 'students Admin';
+    });
+    
+    Route::get('/classes', function () {
+        return 'classes Admin';
+    });
+    
+}));
