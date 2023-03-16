@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class verifyUserRole
+class VerifyUserRole
 {
     /**
      * Handle an incoming request.
