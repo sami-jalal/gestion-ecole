@@ -64,3 +64,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Useful commands:
+after "clone":
+    1 - composer install  ==> create vendor folder
+    2 - cp .env.example .env ==> create the env file, need to add db infos one done
+    3 - php artisan key:generate ==> generate the APP_KEY
+    4 - php artisan migrate ==> Create the database, add "--seed" to add data in the generated database
+
+In case if using Breeze:
+    1- npm install
+    2- npm run build
