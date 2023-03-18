@@ -11,7 +11,7 @@
 
 "Gestion ecole" est le projet fin de module PHP-Laravel. utilise la version du php 8.1.13, laravel 10,
 
-développé dans le cadre d'Ingénierie Logicielle et Systèmes d'Information (ILSI)
+développé dans le cadre de la licence d'Ingénierie Logicielle et Systèmes d'Information (ILSI) de l'ENSA Kénitra.
 
 
 ## Useful commands:
