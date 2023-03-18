@@ -16,9 +16,13 @@ développé dans le cadre de la licence d'Ingénierie Logicielle et Systèmes d'
 
 ## Useful commands:
 after "clone":
-    1 - composer install  ==> create vendor folder
-    2 - cp .env.example .env ==> create the env file, need to add db infos one done
+
+    1 - composer install  ==> Télécharger le dossier vendor
+
+    2 - cp .env.example .env ==> crée le fichier <span>.env</span>
+
     3 - php artisan key:generate ==> generate the APP_KEY
+
     4 - php artisan migrate ==> Create the database, add "--seed" to add data in the generated database
 
 In case if using Breeze:
