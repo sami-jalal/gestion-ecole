@@ -23,8 +23,11 @@ after "clone":
 
     3 - php artisan key:generate ==> generate the APP_KEY
 
-    4 - php artisan migrate ==> Create the database, add "--seed" to add data in the generated database
+    4 - php artisan migrate ==> Créer les tables dans la base données, ajouter "--seed" pour insérer les informations.
 
 In case if using Breeze:
-    1- npm install
+    
+    Le projet inclus la bobliothéque "Breeze"
+
+    1- npm install    
     2- npm run build
