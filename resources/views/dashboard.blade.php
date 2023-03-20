@@ -8,12 +8,6 @@
     </x-slot>
 
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3">
-            <div class="custom_widget">
-
-                <i class="fas fa-users"></i>
-                <span>Utilisateur</span>
-            </div>   
-        </div>
+        <x-card-dash title='Utilisateur' icon='fas fa-users' number='45' />
     </div>
 @endsection
