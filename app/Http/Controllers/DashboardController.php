@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\ServiceDash;
 
 class DashboardController extends Controller
 {
-    public function all_users() {
-        $admins = User::all()->where('role', '=', 'admin')->count();
-        dd($admins);
 
+    protected $service_dash;
+    public function __construct(ServiceDash $service_dash)
+    {
+        $this->service_dash = $service_dash;
+    }
+
+    public function all_users() {
+        $widgets = $this->service_dash->getWIdgetsInfos();
         
         return view('dashboard', [
-            'admins' => $admins
+            'widgets' => $widgets
         ]);
     }
 

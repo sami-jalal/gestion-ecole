@@ -6,8 +6,10 @@
             {{ __('Tableau de bord') }}
         </h2>
     </x-slot>
-
     <div class="row">
-        <x-card-dash title='Utilisateur' icon='fas fa-users' number='45' />
+            @foreach($widgets as $widget)
+                <x-card-dash :widget="$widget" />
+            @endforeach
+      
     </div>
 @endsection

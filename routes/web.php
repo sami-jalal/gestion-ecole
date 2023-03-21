@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get('/', [DashboardController::class, 'all_users'])->middleware(['auth', 'verified'])->middleware('auth');
 
 Route::get('/dashboard', [DashboardController::class, 'all_users'])->middleware(['auth', 'verified'])->name('dashboard');
 
