@@ -6,3 +6,5 @@
 
 {{-- Font Awesome Icons --}}
 <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/datatables/css/dataTables.bootstrap5.min.css')}}">
+
