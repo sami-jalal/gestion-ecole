@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('content') 
+<a href="{{ route('admins.create') }}" class="btn btn-sm btn-success" style="float: right">
+    <i class="fas fa-user-plus"></i>
+</a>
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
@@ -27,6 +30,8 @@
                             data-first_name='{{$admin->first_name}}'
                             data-email='{{$admin->email}}'
                             data-birth_date='{{$admin->birth_date}}'
+                            data-phone='{{$admin->phone}}'
+                            data-adress='{{$admin->adress}}'
                             >
                             <i class="far fa-eye"></i>
                         </button>

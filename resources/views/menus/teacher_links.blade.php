@@ -6,12 +6,6 @@
     </a>
   </li>
   <li class="nav-item">
-    <a @if($current_page == 'admins') class="nav-link active" @else class="nav-link" @endif href="{{ route('admins.get_all') }}">
-      <span data-feather="file" class="align-text-bottom"></span>
-      <i class="fas fa-users-cog"></i> Gestion des Administrateur
-    </a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" href="#">
       <span data-feather="file" class="align-text-bottom"></span>
       <i class="fas fa-chalkboard-teacher"></i> Gestion des enseignants

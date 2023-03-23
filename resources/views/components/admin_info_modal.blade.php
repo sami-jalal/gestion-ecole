@@ -27,8 +27,16 @@
                     <td id="admin_email">:</td>
                 </tr>
                 <tr>
+                    <th>- Numéro de téléphone</th>
+                    <td id="admin_phone">:</td>
+                </tr>
+                <tr>
                     <th>- CIN</th>
                     <td id="admin_cin">:</td>
+                </tr>
+                <tr>
+                    <th>- Adresse</th>
+                    <td id="admin_adress">:</td>
                 </tr>
             </tbody>
           </table>
