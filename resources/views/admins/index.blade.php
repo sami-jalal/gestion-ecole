@@ -20,13 +20,20 @@
                     <td class="text-center">{{$admin->first_name}}</td>
                     <td class="text-center">{{$admin->email}}</td>
                     <td class="text-center">
-                        <a href="#" target="_blank" class="crud-link text-info">
+                        <button type="button" class="btn btn-outline-primary btn_links"
+                            data-id='{{$admin->id}}'
+                            data-name='{{$admin->name}}'
+                            data-last_name='{{$admin->last_name}}'
+                            data-first_name='{{$admin->first_name}}'
+                            data-email='{{$admin->email}}'
+                            data-birth_date='{{$admin->birth_date}}'
+                            >
                             <i class="far fa-eye"></i>
-                        </a>
-                        <a href="#" target="_blank" class="crud-link text-success">
+                        </button>
+                        <a href="#" target="_blank" class="btn btn-outline-success btn-xs btn_links">
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="#" target="_blank" class="crud-link text-danger">
+                        <a href="#" target="_blank" class="btn btn-outline-danger btn-xs btn_links">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>
@@ -34,4 +41,7 @@
             @endforeach
         @endunless
 </table>
+
+<x-admin_info_modal/>
 @endsection
+

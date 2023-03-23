@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $widgets = $this->service_dash->getWIdgetsInfos();
         
         return view('dashboard', [
+            'current_page' => 'dashboard',
             'page_title' => 'Tableau de bord',
             'widgets' => $widgets
         ]);

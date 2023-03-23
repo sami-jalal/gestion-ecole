@@ -224,3 +224,9 @@
   .crud-link  {
     margin: 2px 10px;
   }
+
+  .btn_links {
+    --bs-btn-padding-y: .15rem; 
+    --bs-btn-padding-x: .3rem; 
+    --bs-btn-font-size: .70rem;
+  }

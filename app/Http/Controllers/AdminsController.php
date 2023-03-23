@@ -11,6 +11,7 @@ class AdminsController extends Controller
         $admins = User::all();
      
         return view('admins.index', [
+            'current_page' => 'admins',
             'page_title' => 'Gestion des administrateur',
             "admins" => $admins
         ]);

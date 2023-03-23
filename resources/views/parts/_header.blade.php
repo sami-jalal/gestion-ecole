@@ -16,7 +16,7 @@
             <li><a class="dropdown-item" href="#">
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="button" class="btn btn-block btn-warning btn-sm"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
+                <button type="submit" class="btn btn-block btn-warning btn-sm"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
             </form></a></li>
           </ul>
         </div>
