@@ -31,7 +31,11 @@ class AdminsController extends Controller
 
     // Ajouter un nouveau admin
     public function store(Request $request) {
-        // dd($request);
+         // Vérifier si c'est l'utilisateur actuel est un admin
+         if(auth()->user()->role != 'admin') {
+            abort(403, 'Non autorisé!');
+        }
+
         $admin_fields = $request->validate([
             'name' => 'required',
             'email' => ['required', Rule::unique('users', 'email')],
@@ -43,20 +47,10 @@ class AdminsController extends Controller
             'cin' => 'nullable',
             'phone' => 'nullable'
         ]);
+        $admin_fields['password'] = Hash::make($request->password);
         $admin_fields['role'] = 'admin';
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'adress' => $request->adress,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'birth_date' => $request->birth_date,
-            'cin' => $request->cin,
-            'phone' => $request->phone,
-            'role' => 'admin'
-        ]);
 
+        User::create($admin_fields);
         
         return redirect('/admins')->with('success', 'Enregistrement ajouté avec succès !');        
     }
@@ -73,25 +67,41 @@ class AdminsController extends Controller
     // Mettre à jour les informations d'un administrateur
     public function update(Request $request, User $user) {
         // Vérifier si c'est l'utilisateur actuel est un admin
-        if($user->role != 'admin') {
-            abort(403, 'Unauthorized!');
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Non autorisé!');
         }
 
         $admin_fields = $request->validate([
             'name' => 'required',
-            'email' => ['required', Rule::unique('users', 'email')],
+            'email' => ['required'],
             'adress' => 'nullable',
             'first_name' => 'nullable',
             'last_name' => 'nullable',
             'birth_date' => 'nullable|date',
             'cin' => 'nullable',
             'phone' => 'nullable'
-        ]);
+        ]); 
+        
+        // Vérifier s'il faut modifier le mot de passe de l'utilisateur
+        if( isset($request['update_password']) && $request['update_password'] == 1) {
+            $admin_fields_password = $request->validate(['password' => 'required|confirmed|min:6']);
+            $admin_fields = array_merge($admin_fields, $admin_fields_password);
+            $admin_fields['password'] = Hash::make($request->password);
+        }
+       
+        $user->update($admin_fields);        
+        return back()->with('success', 'Enregistrement modifié avec succès !');        
 
-        dd($admin_fields['password']);
+    }
 
-        // $job->update($form_feilds);        
-        // return back()->with('success', 'Enregistrement modifié avec succès !');   
+    // Supprimer un administrateur
+    public function destroy(User $user) {
+        // Vérifier si c'est l'utilisateur actuel est un admin
+        if(auth()->user()->role != 'admin') {
+            abort(403, 'Non autorisé!');
+        }
 
+        $user->delete();
+        return redirect('/admins')->with('success', 'Enregistrement supprimer avec succès !');
     }
 }

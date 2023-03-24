@@ -92,33 +92,41 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <h2>Compte d'accès</h2>
-                {{-- Email --}}
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email"  name="email" class="form-control form-control-sm" id="exampleInputEmail1" required aria-describedby="emailHelp" value="{{$admin->email}}">
-                    <div id="emailHelp" class="form-text">
-                        @error('email')
-                            <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
-                        @enderror
+                <div class="row">
+                    {{-- Email --}}
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email"  name="email" class="form-control form-control-sm" id="exampleInputEmail1" required aria-describedby="emailHelp" value="{{$admin->email}}">
+                        <div id="emailHelp" class="form-text">
+                            @error('email')
+                                <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
-                </div>
-                {{-- Mot de passe --}}
-                <div class="mb-3">
-                    <label for="password" class="form-label">Nouveau mot de passe</label>
-                    <input type="password"  name="password" class="form-control form-control-sm" id="password" aria-describedby="passwordHelp" required placeholder="Mot de passe">
-                    <div id="passwordHelp" class="form-text">
-                        @error('password')
-                            <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
-                        @enderror
+                    <hr>
+                    {{-- Vérifier si le mot de passe doit être modifier --}}
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <input class="form-check-input" type="checkbox" value="1" id="update_password"  name="update_password" >
+                        <label for="update_password" class="form-label text-info"><strong> Modifer le mot de passe ?</strong></label>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Confirmer le nouveau mot de passe</label>
-                    <input type="password"  name="password_confirmation" class="form-control form-control-sm" id="password_confirmation" required aria-describedby="password_confirmationHelp"  placeholder="Confirmations de mot de passe">
-                    <div id="password_confirmationHelp" class="form-text">
-                        @error('password_confirmation')
-                            <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
-                        @enderror
+                    {{-- Mot de passe --}}
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="password" class="form-label">Nouveau mot de passe</label>
+                        <input type="password"  name="password" disabled class="form-control form-control-sm for_update" id="password" aria-describedby="passwordHelp" required placeholder="Mot de passe">
+                        <div id="passwordHelp" class="form-text">
+                            @error('password')
+                                <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <label for="password" class="form-label">Confirmer le nouveau mot de passe</label>
+                        <input type="password"  name="password_confirmation"  disabled class="form-control form-control-sm for_update" id="password_confirmation" aria-describedby="password_confirmationHelp"  placeholder="Confirmations de mot de passe">
+                        <div id="password_confirmationHelp" class="form-text">
+                            @error('password_confirmation')
+                                <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>

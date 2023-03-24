@@ -4,7 +4,7 @@
 <a href="{{ route('admins.create') }}" class="btn btn-sm btn-success" style="float: right">
     <i class="fas fa-user-plus"></i>
 </a>
-<table id="example" class="table table-striped" style="width:100%">
+<table id="datatable" class="table table-striped" style="width:100%">
     <thead>
         <tr>
             <th class="text-center">Psedou</th>
@@ -23,24 +23,37 @@
                     <td class="text-center">{{$admin->first_name}}</td>
                     <td class="text-center">{{$admin->email}}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-outline-primary btn_links"
-                            data-id='{{$admin->id}}'
-                            data-name='{{$admin->name}}'
-                            data-last_name='{{$admin->last_name}}'
-                            data-first_name='{{$admin->first_name}}'
-                            data-email='{{$admin->email}}'
-                            data-birth_date='{{$admin->birth_date}}'
-                            data-phone='{{$admin->phone}}'
-                            data-adress='{{$admin->adress}}'
-                            >
-                            <i class="far fa-eye"></i>
-                        </button>
-                        <a href="{{url('/admins/' . $admin->id . '/edit')}}" target="_blank" class="btn btn-outline-success btn-xs btn_links">
-                            <i class="far fa-edit"></i>
-                        </a>
-                        <a href="#" target="_blank" class="btn btn-outline-danger btn-xs btn_links">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
+                        <div class="row">
+                            <div class="col-lg-1 col-md-1 col-sm-1 offset-lg-4 offset-md-4">
+                                <button type="button" class="btn btn-outline-primary btn_info btn_links"
+                                    data-id='{{$admin->id}}'
+                                    data-name='{{$admin->name}}'
+                                    data-last_name='{{$admin->last_name}}'
+                                    data-first_name='{{$admin->first_name}}'
+                                    data-email='{{$admin->email}}'
+                                    data-birth_date='{{$admin->birth_date}}'
+                                    data-phone='{{$admin->phone}}'
+                                    data-adress='{{$admin->adress}}'
+                                    data-cin='{{$admin->cin}}'
+                                    >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                                <a href="{{url('/admins/' . $admin->id . '/edit')}}" class="btn btn-outline-success btn-xs btn_links">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                                <form method="POST" action="{{url('/admins/' . $admin->id)}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button id="delete-user-btn" type="button" class="btn btn-outline-danger btn-xs btn_links">
+                                       <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>                        
                     </td>
                 </tr>
             @endforeach

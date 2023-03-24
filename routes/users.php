@@ -10,4 +10,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admins/{user}/edit', [AdminsController::class, 'edit'])->name('admins.edit');
     Route::put('/admins/{user}', [AdminsController::class, 'update'])->name('admins.update');
     Route::post('/admins', [AdminsController::class, 'store'])->name('admins.store');
+    Route::delete('/admins/{user}', [AdminsController::class, 'destroy'])->name('admins.delete');
 });
