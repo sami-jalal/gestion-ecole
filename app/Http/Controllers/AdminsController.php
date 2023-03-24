@@ -11,7 +11,7 @@ class AdminsController extends Controller
 {
     // Récupérer le liste des administrateurs
     Public function get_all() {
-        $admins = User::all();
+        $admins = User::all()->where('id', '!=', auth()->user()->id);
      
         return view('admins.index', [
             'current_page' => 'admins',
@@ -30,7 +30,6 @@ class AdminsController extends Controller
     }
 
     // Ajouter un nouveau admin
-    // Store a new job
     public function store(Request $request) {
         // dd($request);
         $admin_fields = $request->validate([
@@ -62,21 +61,37 @@ class AdminsController extends Controller
         return redirect('/admins')->with('success', 'Enregistrement ajouté avec succès !');        
     }
 
-    // public function store(Request $request) {
-    //     $admin_fields = $request->validate([
-    //         'name' => 'required',
-    //         'email' => ['required', Rule::unique('users', 'email')],
-    //         'password' => 'required|confirmed|min:6',
-    //         'adress' => 'required',
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'birth_date' => 'required|date',
-    //         'cin' => 'required'
-    //     ]);
-    //     $admin_fields['role'] = 'admin';
-        
-    //     User::create($admin_fields);
-    
-    //     return redirect('/admins')->with('success', 'Enregistrement ajouté avec succès !');        
-    // }
+    // Afficher le formaulaire me modification
+    public function edit(User $user) {
+        return view('admins.edit', [
+            'admin' => $user,
+            'current_page' => 'admins',
+            'page_title' => 'Modifier un administrateur'
+        ]);
+    }
+
+    // Mettre à jour les informations d'un administrateur
+    public function update(Request $request, User $user) {
+        // Vérifier si c'est l'utilisateur actuel est un admin
+        if($user->role != 'admin') {
+            abort(403, 'Unauthorized!');
+        }
+
+        $admin_fields = $request->validate([
+            'name' => 'required',
+            'email' => ['required', Rule::unique('users', 'email')],
+            'adress' => 'nullable',
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'birth_date' => 'nullable|date',
+            'cin' => 'nullable',
+            'phone' => 'nullable'
+        ]);
+
+        dd($admin_fields['password']);
+
+        // $job->update($form_feilds);        
+        // return back()->with('success', 'Enregistrement modifié avec succès !');   
+
+    }
 }

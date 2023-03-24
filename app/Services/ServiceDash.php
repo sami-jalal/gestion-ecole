@@ -23,14 +23,14 @@ class ServiceDash
             [
                 'title' => 'Enseignants',
                 'count' => $nbr_teachers,
-                'icon' => 'fas fa-users',
+                'icon' => 'fas fa-chalkboard-teacher',
                 'bg_color' => '#00a857',
                 'route' => 'admins.get_all'
             ],
             [
                 'title' => 'Etudiants',
                 'count' => $nbr_students,
-                'icon' => 'fas fa-users',
+                'icon' => 'fas fa-user-graduate',
                 'bg_color' => '#00a857',
                 'route' => 'admins.get_all'
             ]

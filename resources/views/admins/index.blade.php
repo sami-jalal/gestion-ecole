@@ -35,7 +35,7 @@
                             >
                             <i class="far fa-eye"></i>
                         </button>
-                        <a href="#" target="_blank" class="btn btn-outline-success btn-xs btn_links">
+                        <a href="{{url('/admins/' . $admin->id . '/edit')}}" target="_blank" class="btn btn-outline-success btn-xs btn_links">
                             <i class="far fa-edit"></i>
                         </a>
                         <a href="#" target="_blank" class="btn btn-outline-danger btn-xs btn_links">
@@ -45,6 +45,7 @@
                 </tr>
             @endforeach
         @endunless
+    </tbody>
 </table>
 
 <x-admin_info_modal/>
