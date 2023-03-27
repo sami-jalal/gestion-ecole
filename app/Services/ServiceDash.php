@@ -18,21 +18,21 @@ class ServiceDash
                 'count' => $nbr_admin,
                 'icon' => 'fas fa-users-cog',
                 'bg_color' => '#17a2b8',
-                'route' => 'admins.get_all'
+                'route' => 'users.get_all'
             ],
             [
                 'title' => 'Enseignants',
                 'count' => $nbr_teachers,
                 'icon' => 'fas fa-chalkboard-teacher',
                 'bg_color' => '#00a857',
-                'route' => 'admins.get_all'
+                'route' => 'users.get_all'
             ],
             [
                 'title' => 'Etudiants',
                 'count' => $nbr_students,
                 'icon' => 'fas fa-user-graduate',
                 'bg_color' => '#00a857',
-                'route' => 'admins.get_all'
+                'route' => 'users.get_all'
             ]
         ];
         

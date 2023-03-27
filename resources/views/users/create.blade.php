@@ -91,6 +91,14 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <h2>Compte d'accès</h2>
+                {{-- type compte --}}
+                <div class="mb-3">
+                    <label for="role" class="form-label">Type compte</label>
+                    <select name="role" id="role" class="form-control form-control-sm">
+                        <option value="admin">Administrateur</option>
+                        <option value="teacher">Enseignant</option>
+                    </select>
+                </div>
                 {{-- Email --}}
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>

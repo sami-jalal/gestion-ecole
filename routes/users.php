@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admins', [AdminsController::class, 'get_all'])->name('admins.get_all');
-    Route::get('/admins/create', [AdminsController::class, 'create'])->name('admins.create');
-    Route::get('/admins/{user}/edit', [AdminsController::class, 'edit'])->name('admins.edit');
-    Route::put('/admins/{user}', [AdminsController::class, 'update'])->name('admins.update');
-    Route::post('/admins', [AdminsController::class, 'store'])->name('admins.store');
-    Route::delete('/admins/{user}', [AdminsController::class, 'destroy'])->name('admins.delete');
+    Route::get('/users', [UserController::class, 'get_all'])->name('users.get_all');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.delete');
 });
