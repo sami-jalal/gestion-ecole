@@ -33,3 +33,9 @@ $(".delete-user-btn").click(function(e){
     $form.submit();
   } 
 });
+
+
+// Activer la saisie du champ "CNE" uniquement pour les rôle student
+$('#role').change(function() {
+  $(this).val() == 'student' ? $('#cne').prop('disabled', false) : $('#cne').prop('disabled', true);
+});

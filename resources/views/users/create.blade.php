@@ -76,6 +76,25 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- Rôle --}}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="role" class="form-label">Rôle</label>
+                        <select name="role" id="role" class="form-control form-control-sm">
+                            @foreach ($roles as $role)
+                                <option value="{{$role->code}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {{-- CNE --}}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="cne" class="form-label">CNE</label>
+                        <input type="text" name="cne" class="form-control form-control-sm" id="cne" aria-describedby="cneHelp" disabled value="{{old('cne')}}">
+                        <div id="cneHelp" class="form-text">
+                            @error('cne')
+                                <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                     {{-- Adresse --}}
                     <div class="mb-3">
                         <label for="adress" class="form-label">Adresse</label>
@@ -91,14 +110,7 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <h2>Compte d'accès</h2>
-                {{-- type compte --}}
-                <div class="mb-3">
-                    <label for="role" class="form-label">Type compte</label>
-                    <select name="role" id="role" class="form-control form-control-sm">
-                        <option value="admin">Administrateur</option>
-                        <option value="teacher">Enseignant</option>
-                    </select>
-                </div>
+                
                 {{-- Email --}}
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>

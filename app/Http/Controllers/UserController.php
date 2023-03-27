@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -11,8 +13,13 @@ class UserController extends Controller
 {
     // Récupérer le liste des useristrateurs
     Public function get_all() {
-        $users = User::all()->where('id', '!=', auth()->user()->id);
-     
+        // $users = User::all()->where('id', '!=', auth()->user()->id);
+        $users = DB::table('users')
+            ->join('roles', 'users.role', '=', 'roles.code')
+            ->select('users.*', 'roles.name AS role_name')
+            ->where('users.id', '!=', auth()->user()->id)
+            ->get();
+            
         return view('users.index', [
             'current_page' => 'users',
             'page_title' => 'Gestion des useristrateur',
@@ -23,7 +30,10 @@ class UserController extends Controller
     // Afficher le formulaire d'ajout
     public function create()
     {
+        $roles = Role::all();
+
         return view('users.create', [
+            'roles' => $roles,
             'current_page' => 'users',
             'page_title' => 'Ajouter un useristrateur'
         ]);
@@ -94,7 +104,7 @@ class UserController extends Controller
 
     }
 
-    // Supprimer un useristrateur
+    // Supprimer un utilisateur
     public function destroy(User $user) {
         // Vérifier si c'est l'utilisateur actuel est un user
         if(auth()->user()->role != 'user') {

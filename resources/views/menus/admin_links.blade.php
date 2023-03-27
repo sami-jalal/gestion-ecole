@@ -13,12 +13,6 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">
-      <span data-feather="shopping-cart" class="align-text-bottom"></span>
-      <i class="fas fa-user-graduate"></i> Gestion des étudiants
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">
       <span data-feather="users" class="align-text-bottom"></span>
       <i class="fas fa-microscope"></i> Gestion des cours
     </a>

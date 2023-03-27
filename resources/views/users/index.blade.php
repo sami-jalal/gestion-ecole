@@ -19,7 +19,7 @@
         @unless (count($users) == 0)
             @foreach ($users as $user)
                 <tr>
-                    <td class="text-center">{{$user->role}}</td>
+                    <td class="text-center">{{$user->role_name}}</td>
                     <td class="text-center">{{$user->name}}</td>
                     <td class="text-center">{{$user->last_name}}</td>
                     <td class="text-center">{{$user->first_name}}</td>

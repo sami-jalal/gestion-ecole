@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('cin')->unique();
             $table->date('birth_date')->nullable();
-            $table->string('adress');
+            $table->string('adress')->nullable();
+            $table->string('role')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('cne')->nullable();
         });
     }
 

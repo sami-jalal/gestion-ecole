@@ -25,6 +25,15 @@ after "clone":
 
     4 - php artisan migrate ==> Créer les tables dans la base données, ajouter "--seed" pour insérer les informations.
 
+    4.1 - Au niveau de phpMyAdmin en mode SQL exécuter les requêtes suivantes pour changer le moteur de stockage:
+        ALTER TABLE `courses` ENGINE=InnoDB;
+        ALTER TABLE `failed_jobs` ENGINE=InnoDB;
+        ALTER TABLE `migrations` ENGINE=InnoDB;
+        ALTER TABLE `password_reset_tokens` ENGINE=InnoDB;
+        ALTER TABLE `personal_access_tokens` ENGINE=InnoDB;
+        ALTER TABLE `roles` ENGINE=InnoDB;
+        ALTER TABLE `users` ENGINE=InnoDB;
+
 In case if using Breeze:
     
     Le projet inclus la bobliothéque "Breeze"
