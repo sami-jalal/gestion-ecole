@@ -77,6 +77,25 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- Rôle --}}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="role" class="form-label">Rôle</label>
+                        <select name="role" id="role" class="form-control form-control-sm">
+                            @foreach ($roles as $role)
+                                <option value="{{$role->code}}" @if ($user->role === $role->code) selected @endif>{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {{-- CNE --}}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label for="cne" class="form-label">CNE</label>
+                        <input type="text" name="cne" class="form-control form-control-sm" id="cne" aria-describedby="cneHelp" @if ($user->role != 'student') disabled @endif value="{{$user->cne}}">
+                        <div id="cneHelp" class="form-text">
+                            @error('cne')
+                                <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
                     {{-- Adresse --}}
                     <div class="mb-3">
                         <label for="adress" class="form-label">Adresse</label>

@@ -244,3 +244,11 @@ body {
   font-size: 40px;
   vertical-align: middle !important;
 }
+
+#form_content {
+  background-color: rgb(236, 236, 236);
+  padding: 20px 25px;
+  
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px 0px #888888;
+}

@@ -34,9 +34,14 @@ after "clone":
         ALTER TABLE `roles` ENGINE=InnoDB;
         ALTER TABLE `users` ENGINE=InnoDB;
 
-In case if using Breeze:
+Dans le cas d'utilisation de Breeze:
     
     Le projet inclus la bobliothéque "Breeze"
 
     1- npm install    
     2- npm run build
+
+Dans le cas d'upload des fichiers
+    
+    1 - Dans "config/filesystems.php" chager la ligne "'default' => env('FILESYSTEM_DISK', 'local'),"  par "'default' => env('FILESYSTEM_DISK', 'public'),"
+    2 - Exécuter la commande : php artisan storage:link

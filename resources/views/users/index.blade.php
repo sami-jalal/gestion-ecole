@@ -7,6 +7,7 @@
 <table id="datatable" class="table table-striped" style="width:100%">
     <thead>
         <tr>
+            <th class="text-center"></th>
             <th class="text-center">Rôle</th>
             <th class="text-center">Psedou</th>
             <th class="text-center">Nom</th>
@@ -17,8 +18,21 @@
     </thead>
     <tbody>
         @unless (count($users) == 0)
-            @foreach ($users as $user)
+            @foreach ($users as $user) 
+                @php
+                   switch($user->role) {
+                        case 'admin':
+                            $icon = 'fas fa-user-lock';
+                            break;
+                        case 'teacher':
+                            $icon = 'fas fa-chalkboard-teacher';
+                            break;
+                        default:
+                            $icon = 'fas fa-user-graduate';
+                    }
+                @endphp
                 <tr>
+                    <td class="text-center"><i class="{{$icon}}"></i></td>
                     <td class="text-center">{{$user->role_name}}</td>
                     <td class="text-center">{{$user->name}}</td>
                     <td class="text-center">{{$user->last_name}}</td>

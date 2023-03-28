@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{url('admins')}}" >
+    <form method="POST" action="{{url('users')}}" >
         @csrf
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-1 offset-lg-10">

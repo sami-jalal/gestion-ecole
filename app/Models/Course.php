@@ -9,6 +9,13 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'user_id',
+        'file'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
