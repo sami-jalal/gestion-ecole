@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Course;
 use App\Models\User;
 
 class ServiceDash
@@ -11,6 +12,7 @@ class ServiceDash
         $nbr_admin = User::all()->where('role', '=', 'admin')->count();
         $nbr_teachers = User::all()->where('role', '=', 'teacher')->count();
         $nbr_students = User::all()->where('role', '=', 'student')->count();
+        $nbr_courses = Course::all()->count();
         
         $data = [
             [
@@ -31,8 +33,15 @@ class ServiceDash
                 'title' => 'Etudiants',
                 'count' => $nbr_students,
                 'icon' => 'fas fa-user-graduate',
-                'bg_color' => '#00a857',
+                'bg_color' => '#f58742',
                 'route' => 'users.get_all'
+            ],
+            [
+                'title' => 'Cours',
+                'count' => $nbr_courses,
+                'icon' => 'fas fa-book',
+                'bg_color' => '#aec724',
+                'route' => 'courses.get_all'
             ]
         ];
         

@@ -35,6 +35,10 @@
                     <td id="user_cin">:</td>
                 </tr>
                 <tr>
+                    <th>- CNE</th>
+                    <td id="user_cne">:</td>
+                </tr>
+                <tr>
                     <th>- Adresse</th>
                     <td id="user_adress">:</td>
                 </tr>

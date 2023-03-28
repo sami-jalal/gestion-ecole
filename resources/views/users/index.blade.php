@@ -37,6 +37,7 @@
                                     data-phone='{{$user->phone}}'
                                     data-adress='{{$user->adress}}'
                                     data-cin='{{$user->cin}}'
+                                    data-cne='{{$user->cne}}'
                                     >
                                     <i class="far fa-eye"></i>
                                 </button>

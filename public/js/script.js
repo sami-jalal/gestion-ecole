@@ -15,6 +15,7 @@ $('.btn_info').click(function () {
   $('#user_cin').empty().text($(this).data('cin'));
   $('#user_adress').empty().text($(this).data('adress'));
   $('#user_phone').empty().text($(this).data('phone'));
+  $('#user_cne').empty().text($(this).data('cne'));
   $('#user_infos').modal('show');
 });
 

@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     // Récupérer le liste des useristrateurs
     Public function get_all() {
-        // $users = User::all()->where('id', '!=', auth()->user()->id);
+        // joindre les tabes users et roles
         $users = DB::table('users')
             ->join('roles', 'users.role', '=', 'roles.code')
             ->select('users.*', 'roles.name AS role_name')
@@ -22,7 +22,7 @@ class UserController extends Controller
             
         return view('users.index', [
             'current_page' => 'users',
-            'page_title' => 'Gestion des useristrateur',
+            'page_title' => 'Gestion des utilisateur',
             "users" => $users
         ]);
     }
@@ -35,14 +35,14 @@ class UserController extends Controller
         return view('users.create', [
             'roles' => $roles,
             'current_page' => 'users',
-            'page_title' => 'Ajouter un useristrateur'
+            'page_title' => 'Ajouter un utilisateur'
         ]);
     }
 
     // Ajouter un nouveau user
     public function store(Request $request) {
          // Vérifier si c'est l'utilisateur actuel est un user
-         if(auth()->user()->role != 'user') {
+         if(auth()->user()->role != 'admin') {
             abort(403, 'Non autorisé!');
         }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
         return view('users.edit', [
             'user' => $user,
             'current_page' => 'users',
-            'page_title' => 'Modifier un useristrateur'
+            'page_title' => 'Modifier un utilisateur'
         ]);
     }
 

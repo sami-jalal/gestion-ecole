@@ -6,10 +6,10 @@
             {{ __('Tableau de bord') }}
         </h2>
     </x-slot>
+    {{-- @dd($widgets) --}}
     <div class="row">
             @foreach($widgets as $widget)
                 <x-card-dash :widget="$widget" />
             @endforeach
-      
     </div>
 @endsection
