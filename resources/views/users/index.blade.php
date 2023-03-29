@@ -65,7 +65,7 @@
                                 <form method="POST" action="{{url('/users/' . $user->id)}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-outline-danger btn-xs btn_links delete-user-btn">
+                                    <button type="button" class="btn btn-outline-danger btn-xs btn_links delete-btn">
                                        <i class="far fa-trash-alt"></i>
                                     </button>
                                 </form>

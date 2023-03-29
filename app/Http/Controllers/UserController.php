@@ -41,7 +41,7 @@ class UserController extends Controller
 
     // Ajouter un nouveau user
     public function store(Request $request) {
-         // Vérifier si c'est l'utilisateur actuel est un user
+         // Vérifier si c'est l'utilisateur actuel est un admin
         if(auth()->user()->role != 'admin') {
             abort(403, 'Non autorisé!');
         }
@@ -131,7 +131,7 @@ class UserController extends Controller
     // Supprimer un utilisateur
     public function destroy(User $user) {
         // Vérifier si c'est l'utilisateur actuel est un user
-        if(auth()->user()->role != 'user') {
+        if(auth()->user()->role != 'admin') {
             abort(403, 'Non autorisé!');
         }
 

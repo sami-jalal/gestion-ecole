@@ -12,3 +12,6 @@ Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
     Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
     Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->name('courses.delete');
 });
+Route::middleware(['auth', 'role:admin,student'])->group(function () {
+    Route::get('/mycourses', [CourseController::class, 'my_courses'])->name('courses.my_courses');
+});

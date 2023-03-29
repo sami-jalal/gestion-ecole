@@ -26,10 +26,8 @@ $('#update_password').change(function () {
 
 
 // Vérifcation lors de la suppession d'un enregistrement
-$(".delete-user-btn").click(function(e){
-
-  let $form = $(this).closest('form');
-     
+$(".delete-btn").click(function(e){
+  let $form = $(this).closest('form'); 
   if (confirm("Êtes-vous sûr de vouloir continuer?") == true) {
     $form.submit();
   } 

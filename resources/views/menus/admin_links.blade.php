@@ -6,13 +6,13 @@
     </a>
   </li>
   <li class="nav-item">
-    <a @if($current_page == 'admins') class="nav-link active" @else class="nav-link" @endif href="{{ route('users.get_all') }}">
+    <a @if($current_page == 'users') class="nav-link active" @else class="nav-link" @endif href="{{ route('users.get_all') }}">
       <span data-feather="file" class="align-text-bottom"></span>
       <i class="fas fa-users-cog"></i> Gestion des Utilisateurs
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{route('courses.get_all')}}">
+    <a @if($current_page == 'courses') class="nav-link active" @else class="nav-link" @endif class="nav-link" href="{{route('courses.get_all')}}">
       <span data-feather="users" class="align-text-bottom"></span>
       <i class="fas fa-microscope"></i> Gestion des cours
     </a>

@@ -9,12 +9,30 @@ use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
+    // Les rôles autorisés à effectuer les crud
+    private $allowed_roles;
+
+    public function __construct()
+    {
+        $this->allowed_roles = ['admin', 'teacher'];      
+    }
+
     public function get_all() {
-        $courses = DB::table('courses')
-        ->join('users', 'users.id', '=', 'courses.user_id')
-        ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
-        ->get();
-        
+       
+        // Le rôle admin autorise la visualisation de tout les cours
+        if(auth()->user()->role == 'admin') {
+            $courses = DB::table('courses')
+            ->join('users', 'users.id', '=', 'courses.user_id')
+            ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
+            ->get();
+        } else {            
+            $courses = DB::table('courses')
+            ->join('users', 'users.id', '=', 'courses.user_id')
+            ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
+            ->where('users.id', '=', auth()->user()->id)
+            ->get();
+        }
+       
         return view('courses.index', [
             'courses' => $courses,
             'current_page' => 'courses',
@@ -49,28 +67,53 @@ class CourseController extends Controller
         return redirect('/courses')->with('success', 'Enregistrement ajouté avec succès !'); 
     }
     
-    public function edit() {
 
-        return view('courses.index', [
+    public function edit(Course $course) {
+        
+        return view('courses.edit', [
+            'course' => $course,
             'current_page' => 'courses',
             'page_title' => 'Gestion des cours'
         ]);
     }
 
     
-    public function update() {
+    public function update(Request $request, Course $course) {
 
-        return view('courses.index', [
-            'current_page' => 'courses',
-            'page_title' => 'Gestion des cours'
+        $course_feilds = $request->validate([
+            'title' => 'required',
+            'description' => 'nullable',
         ]);
+
+        if($request->file('file')){
+            $course_feilds['file'] = $request->file('file')->store('documents', 'public');
+        }
+
+        $course->update($course_feilds);
+        return back()->with('success', 'Enregistrement modifié avec succès !');
     }
     
-    public function destroy() {
+    public function destroy(Course $course) {
+        // Vérifier si c'est l'utilisateur actuel est un user
+        if(in_array(auth()->user()->role, $this->allowed_roles)) {
+            abort(403, 'Non autorisé!');
+        }
 
-        return view('courses.index', [
+        $course->delete();
+        return redirect('/courses')->with('success', 'Enregistrement supprimer avec succès !');
+    }
+
+    // Afficher les cours pour les étudiants
+    public function my_courses() {
+        $courses = DB::table('courses')
+        ->join('users', 'users.id', '=', 'courses.user_id')
+        ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
+        ->get();
+
+        return view('courses.mycourses', [
+            'courses' => $courses,
             'current_page' => 'courses',
-            'page_title' => 'Gestion des utilisateur'
+            'page_title' => 'Gestion des cours'
         ]);
     }
 }

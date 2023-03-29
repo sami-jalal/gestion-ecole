@@ -16,6 +16,10 @@ class DashboardController extends Controller
     }
 
     public function all_users() {
+        if(auth()->user()->role === 'student') {
+            return redirect('/mycourses');
+        }
+
         $widgets = $this->service_dash->getWIdgetsInfos();
       
         return view('dashboard', [

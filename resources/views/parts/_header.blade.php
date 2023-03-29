@@ -10,7 +10,7 @@
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{route('profile.edit')}}">
-                <i class="fas fa-id-card"></i> Mon profile 
+                <i class="fas fa-key"></i> Modifier mon mot de passe
             </a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">
