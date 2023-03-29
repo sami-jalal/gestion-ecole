@@ -9,13 +9,13 @@
 
 ## A propos du projet
 
-"Gestion ecole" est le projet fin de module PHP-Laravel. utilise la version du php 8.1.13, laravel 10,
+"Gestion établissment scolaire" est le mini-projet fin de module PHP-Laravel. utilise la version du php 8.1.13, laravel 10,
 
 développé dans le cadre de la licence d'Ingénierie Logicielle et Systèmes d'Information (ILSI) de l'ENSA Kénitra.
 
 
 ## Useful commands:
-after "clone":
+Après "clone":
 
     1 - composer install  ==> Télécharger le dossier vendor
 
