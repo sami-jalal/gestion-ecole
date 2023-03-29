@@ -9,7 +9,7 @@
                 <button type="submit" class="btn btn-primary">Confirmer</button>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1">
-                <a href="#" class="btn btn-warning">Annuler</a>
+                <a href="{{route('users.get_all')}}" class="btn btn-warning">Fermer</a>
             </div>
         </div>
         <div class="row">
@@ -113,7 +113,7 @@
                 
                 {{-- Email --}}
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
                     <input type="email"  name="email" class="form-control form-control-sm" id="exampleInputEmail1" required aria-describedby="emailHelp" value="{{old('email')}}">
                     <div id="emailHelp" class="form-text">
                         @error('email')
@@ -133,7 +133,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password"  name="password_confirmation" class="form-control form-control-sm" id="password_confirmation" required aria-describedby="password_confirmationHelp"  placeholder="Confirmations de dot de passe">
+                    <input type="password"  name="password_confirmation" class="form-control form-control-sm" id="password_confirmation" required aria-describedby="password_confirmationHelp"  placeholder="Confirmations de mot de passe">
                     <div id="password_confirmationHelp" class="form-text">
                         @error('password_confirmation')
                             <span class="alert-custom text-danger"><i class="icon fas fa-ban"></i> {{ $message }}</span>

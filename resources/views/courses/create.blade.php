@@ -10,7 +10,7 @@
                         <button type="submit" class="btn btn-primary">Confirmer</button>
                     </div>
                     <div class="col-lg-1 col-md-1 col-sm-1">
-                        <a href="#" class="btn btn-warning">Annuler</a>
+                        <a href="{{route('courses.get_all')}}" class="btn btn-warning">Fermer</a>
                     </div>
                 </div>
                 <div class="row">

@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.108.0">
-        <title>Gestion ecole</title>
+        <title>Gestion établissment scolaire</title>
         {{-- Charger les fichiers CSS --}}
         @include('parts._css')
     </head>

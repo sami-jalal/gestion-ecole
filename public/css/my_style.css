@@ -252,3 +252,77 @@ body {
   border-radius: 15px;
   box-shadow: 0px 0px 5px 0px #888888;
 }
+
+#logo_auth{
+  width: 250px;
+}
+
+#logo_menu{
+  width: 50px;
+}
+
+.sidebar {
+  background-color: #3d4247 !important;
+  padding: 10px;
+}
+
+.logo_sidemenu {
+  padding: 20px;
+}
+
+
+.title_sidemenu {
+  padding: 20px 5px;
+}
+
+.logo_title{
+  color: aliceblue;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.separator{
+  color:lightsteelblue;
+}
+
+.nav-link {
+  color: azure !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+
+.nav-link.active{
+  background-color: aliceblue;
+  color: rgb(34, 108, 227) !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  border-radius: 10px;
+}
+
+body {
+  background-color: #F4F6F9;
+}
+
+.my_section {
+  background-color: #fff;
+}
+
+main {
+  background-color: white;
+  padding: 10px 5px;
+  min-height: 600px;
+}
+
+#datatable tr {
+  border: 1px solid #343A40;
+}
+
+.dwn_link {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: cornflowerblue;
+  color: #F4F6F9;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
