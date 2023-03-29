@@ -2,7 +2,7 @@
   <li class="nav-item">
     <a @if($current_page == 'courses') class="nav-link active" @else class="nav-link" @endif href="{{route('courses.my_courses')}}">
       <span data-feather="users" class="align-text-bottom"></span>
-      <i class="fas fa-microscope"></i> Mes cours
+      <i class="fas fa-microscope"></i> Bibliothèque 
     </a>
   </li>
 </ul>
