@@ -13,15 +13,6 @@ class VerifyUserRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // public function handle(Request $request, Closure $next, string $role): Response
-    // {
-    //     if(auth()->user()->role === $role) {
-    //         return $next($request);
-    //     }else{
-    //         abort(403);
-    //     }
-    // }
-
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if(in_array(auth()->user()->role, $roles)) {

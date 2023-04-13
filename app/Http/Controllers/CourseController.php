@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\User;
+use App\Services\CourseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,27 +12,17 @@ class CourseController extends Controller
 {
     // Les rôles autorisés à effectuer les crud
     private $allowed_roles;
+    protected $course_service;
 
-    public function __construct()
+    public function __construct(CourseService $course_service)
     {
-        $this->allowed_roles = ['admin', 'teacher'];      
-    }
+        $this->allowed_roles = ['admin', 'teacher'];    
+        $this->course_service = $course_service;
+    }  
 
     public function get_all() {
        
-        // Le rôle admin autorise la visualisation de tout les cours
-        if(auth()->user()->role == 'admin') {
-            $courses = DB::table('courses')
-            ->join('users', 'users.id', '=', 'courses.user_id')
-            ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
-            ->get();
-        } else {            
-            $courses = DB::table('courses')
-            ->join('users', 'users.id', '=', 'courses.user_id')
-            ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
-            ->where('users.id', '=', auth()->user()->id)
-            ->get();
-        }
+        $courses = $this->course_service->get_courses_with_roles();
        
         return view('courses.index', [
             'courses' => $courses,
@@ -105,10 +96,8 @@ class CourseController extends Controller
 
     // Afficher les cours pour les étudiants
     public function my_courses() {
-        $courses = DB::table('courses')
-        ->join('users', 'users.id', '=', 'courses.user_id')
-        ->select('courses.*', DB::raw("CONCAT(users.first_name, ' ', users.last_name) AS author"))
-        ->get();
+        
+        $courses = $this->course_service->get_courses_for_students();
 
         return view('courses.mycourses', [
             'courses' => $courses,

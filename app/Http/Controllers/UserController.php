@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    protected $user_service;
+
+    public function __construct(UserService $user_service)
+    {
+        $this->user_service = $user_service;
+    }
+
     // Récupérer le liste des useristrateurs
     Public function get_all() {
-        // joindre les tabes users et roles
-        $users = DB::table('users')
-            ->join('roles', 'users.role', '=', 'roles.code')
-            ->select('users.*', 'roles.name AS role_name')
-            ->where('users.id', '!=', auth()->user()->id)
-            ->get();
+        // Récupérer les utilisateurs avec leurs rôles depuis le service UserService
+        $users = $this->user_service->get_users_with_roles();
             
         return view('users.index', [
             'current_page' => 'users',
